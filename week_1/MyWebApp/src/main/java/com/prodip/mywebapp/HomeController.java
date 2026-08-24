@@ -15,6 +15,7 @@ public class HomeController {
 
 package com.prodip.mywebapp;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,11 +40,26 @@ public class HomeController {
 
     //Update_Code
 
+    /*
     @RequestMapping("home")
     public ModelAndView home(@RequestParam("name") String myName)
     {
         ModelAndView mv = new ModelAndView();
         mv.addObject("name", myName);
+        mv.setViewName("home");
+
+        return mv;
+
+    =============================================================
+    Update Code  rondo2
+    ==============================================================  */
+
+    @RequestMapping("home")
+    public ModelAndView home(Alien alien)
+    {
+        ModelAndView mv = new ModelAndView();
+
+        mv.addObject("obj", alien);
         mv.setViewName("home");
 
         return mv;

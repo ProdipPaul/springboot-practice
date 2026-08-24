@@ -4,6 +4,10 @@
     <title>Title</title>
 </head>
 <body>
-    Welcome ${name}
+     <!--  Welcome ${name} -->
+     <!--  Update Code  -->
+
+     Welcome ${obj.aid} , ${obj.aname}, ${obj.lang}
+
 </body>
 </html>
