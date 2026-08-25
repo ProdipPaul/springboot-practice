@@ -1,17 +1,3 @@
-/*
-
-@Controller
-public class HomeController {
-
-    @RequestMapping("home")
-    public String home()
-    {
-        System.out.println("Hi");
-        return "home.jsp";
-    }
-
-}
- */
 
 package com.prodip.mywebapp;
 
