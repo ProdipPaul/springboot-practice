@@ -1,5 +1,6 @@
 package com.prodip.bootjpa.model;
 
+
 public class Alien
 {
     private int aid;
