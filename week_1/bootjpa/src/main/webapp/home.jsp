@@ -9,9 +9,17 @@
         <form action ="addAlien">
             <input Type="text" name="aid"><br>
             <input Type="text" name="aname"><br>
-            <input Type="submit"><br>
+            <input type="text" name="tech"><br>
+              <input Type="submit"><br>
 
         </form>
+
+        <form action ="getAlien">
+                    <input Type="text" name="aid"><br>
+
+                    <input Type="submit"><br>
+
+                </form>
 
 </body>
 </html>
