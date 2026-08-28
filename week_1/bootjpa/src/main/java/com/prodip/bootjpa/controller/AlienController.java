@@ -16,26 +16,49 @@ public class AlienController {
     AlienRepo repo;
 
     @RequestMapping("/")
-    public String home() {
+    public String home()
+    {
         return "home.jsp";
     }
 
-    // ১. @PatchMapping এর জায়গায় @PostMapping হবে
-    // ২. @ResponseBody যোগ করা হয়েছে
-    @PostMapping("/alien")
+    @DeleteMapping("/alien/{aid}")
+    public String deleteAlien(@PathVariable  int aid)
+    {
+        Alien a = repo.findById(aid).orElse(null);
+        if(a != null){
+            repo.delete(a);
+            return "deleted" ;
+        }
+        return "Not Found";
+    }
 
-    public Alien addAlien(@RequestBody Alien alien) {
+
+
+    @PostMapping("/alien")    // @PostMapping(path="/alien", consumes= {"application/json"}) //NB: only JSON format er data input nibe
+    public Alien addAlien(@RequestBody Alien alien)
+    {
         repo.save(alien);
         return alien;
     }
 
     @GetMapping(path="/aliens")
-    public List<Alien> getAliens() {
+    public List<Alien> getAliens()
+    {
         return repo.findAll();
     }
 
-    @GetMapping("/alien/{aid}") // @RequestMapping এর বদলে নির্দিষ্টভাবে @GetMapping
-    public Optional<Alien> getAlien(@PathVariable("aid") int aid) {
+
+    @PutMapping(path= "/alien")
+    public Alien saveOrUpdateAlien(@RequestBody Alien alien)
+    {
+        repo.save(alien);
+        return alien;
+    }
+
+
+    @RequestMapping("/alien/{aid}")
+    public Optional<Alien> getAlien(@PathVariable("aid") int aid)
+    {
         return repo.findById(aid);
     }
 }
