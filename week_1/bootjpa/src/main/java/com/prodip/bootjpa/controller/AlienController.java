@@ -1,55 +1,41 @@
 package com.prodip.bootjpa.controller;
 
-
 import com.prodip.bootjpa.dao.AlienRepo;
 import com.prodip.bootjpa.model.Alien;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@Controller
-public  class AlienController
-{
+@RestController
+public class AlienController {
+
     @Autowired
     AlienRepo repo;
 
     @RequestMapping("/")
-    public String home()
-    {
+    public String home() {
         return "home.jsp";
     }
 
-    @RequestMapping("/addAlien")
-    public String addAlien(Alien alien)
-    {
+    // ১. @PatchMapping এর জায়গায় @PostMapping হবে
+    // ২. @ResponseBody যোগ করা হয়েছে
+    @PostMapping("/alien")
+
+    public Alien addAlien(@RequestBody Alien alien) {
         repo.save(alien);
-        return "home.jsp";
+        return alien;
     }
 
-    @RequestMapping("/aliens")
-    @ResponseBody
-    public List<Alien> getAliens()
-    {
-
-        return  repo.findAll();
-
+    @GetMapping(path="/aliens")
+    public List<Alien> getAliens() {
+        return repo.findAll();
     }
 
-
-    @RequestMapping("/alien/{aid}")
-    @ResponseBody
-    public Optional<Alien> getAlien(@PathVariable("aid") int aid)
-    {
-
-        return  repo.findById(aid);
-
+    @GetMapping("/alien/{aid}") // @RequestMapping এর বদলে নির্দিষ্টভাবে @GetMapping
+    public Optional<Alien> getAlien(@PathVariable("aid") int aid) {
+        return repo.findById(aid);
     }
-
 }
