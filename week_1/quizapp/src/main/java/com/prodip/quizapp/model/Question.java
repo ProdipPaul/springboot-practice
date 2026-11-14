@@ -1,4 +1,4 @@
-package com.prodip.quizapp;
+package com.prodip.quizapp.model;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.Column;

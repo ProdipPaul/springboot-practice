@@ -1,12 +1,9 @@
 package com.prodip.quizapp.controller;
 
 
-import com.prodip.quizapp.Question;
+import com.prodip.quizapp.model.Question;
 import com.prodip.quizapp.service.Question_Service;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
